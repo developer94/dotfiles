@@ -43,6 +43,9 @@ call dein#add('https://gitlab.com/mixedCase/deoplete-omnisharp.git', {
             \ 'on_ft': 'cs'
             \ })
 
+" git
+let g:gitgutter_max_signs=100000
+
 " C/C++
 call dein#add('zchee/deoplete-clang')
 call dein#add('octol/vim-cpp-enhanced-highlight')
