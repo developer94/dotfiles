@@ -43,6 +43,9 @@ call dein#add('https://gitlab.com/mixedCase/deoplete-omnisharp.git', {
             \ 'on_ft': 'cs'
             \ })
 
+" git
+let g:gitgutter_max_signs=100000
+
 " C/C++
 call dein#add('zchee/deoplete-clang')
 call dein#add('octol/vim-cpp-enhanced-highlight')
@@ -160,9 +163,9 @@ endif
 let g:NERDCustomDelimiters = { 'jinja.html': { 'left': '{#','right': '#}' } }
 
 " CtrlP -----------------------------------
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|.git'
+"let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|.git'
 
 " Reselect on indentation
 vnoremap > >gv
@@ -170,7 +173,10 @@ vnoremap < <gv
 
 " Color -----------------------------------
 set background=light
-colorscheme solarized8_light_high
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
 
 " Lightline  ------------------------------
 let g:lightline = {
