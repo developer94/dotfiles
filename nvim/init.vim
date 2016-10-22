@@ -62,6 +62,8 @@ call dein#add('ternjs/tern_for_vim')
 call dein#add('leafgarland/typescript-vim')
 " Angular2
 call dein#add('magarcia/vim-angular2-snippets')
+" JSON
+call dein#add('elzr/vim-json')
 
 " Utility
 call dein#add('neomake/neomake')
@@ -187,8 +189,5 @@ xmap <C-e>     <Plug>(neosnippet_expand_target)
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+set conceallevel=0
 
