@@ -171,7 +171,10 @@ vnoremap < <gv
 
 " Color -----------------------------------
 set background=light
-colorscheme solarized8_light_high
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
 
 " Lightline  ------------------------------
 let g:lightline = {
