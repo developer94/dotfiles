@@ -61,6 +61,10 @@ call dein#add('tmhedberg/SimpylFold')
 " Javascript
 call dein#add('pangloss/vim-javascript')
 call dein#add('ternjs/tern_for_vim')
+" JSX
+call dein#add('mxw/vim-jsx')
+" Flow
+call dein#add('steelsojka/deoplete-flow')
 " Typescript
 call dein#add('leafgarland/typescript-vim')
 " Angular2
@@ -71,6 +75,7 @@ call dein#add('elzr/vim-json')
 " Utility
 call dein#add('neomake/neomake')
 call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('editorconfig/editorconfig-vim')
 call dein#add('easymotion/vim-easymotion')
 
 " Syntax plugins
@@ -94,7 +99,7 @@ call dein#end()
 filetype plugin indent on
 
 " Python config ---------------------------
-let g:python_host_prog = '/home/j/.pyenv/versions/2.7.11/bin/python'
+let g:python2_host_prog = '/home/j/.pyenv/versions/2.7.11/bin/python'
 let g:python3_host_prog = '/home/j/.pyenv/versions/3.5.1/bin/python'
 " Jedi
 let g:jedi#completions_enabled = 0
@@ -116,10 +121,12 @@ autocmd! BufWritePost * Neomake
 
     " Neomake python config
     let g:neomake_python_enabled_makers = ['pylint']
+    let g:neomake_javascriot_enabled_makers = ['flow','eslint']
 "------------------------------------------
 
 " Deoplete --------------------------------
 let g:deoplete#enable_at_startup=1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Neosnippet ------------------------------
 let g:neosnippet#enable_snipmate_compatibility = 1
@@ -185,6 +192,23 @@ let g:lightline = {
 
 " PHP config ------------------------------
 let g:phpcomplete_index_composer_command='composer'
+
+" Javascript config -----------------------
+let g:jsx_ext_required = 0
+let g:javascript_plugin_flow = 1
+
+" Flow config - choose local flow if available
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+
+let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+
+if g:flow_path != 'flow not found'
+  let g:deoplete#sources#flow#flow_bin = g:flow_path
+endif
+" End flow config -------------------------
+" End javascript config
 
 " Neosnippet config -----------------------
 let g:neosnippet#snippets_directory='~/.config/nvim/bundle/repos/github.com/Shougo/neosnippet-snippets/neosnippets'
