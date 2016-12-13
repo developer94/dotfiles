@@ -171,3 +171,6 @@ client.unfocused #333333 #333333 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
 exec --no-startup-id "setxkbmap -model pc105 -layout us,hr -option grp:alt_shift_toggle"
+
+for_window [class="hyper"] border none
+hide_edge_borders smart
