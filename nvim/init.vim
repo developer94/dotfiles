@@ -179,11 +179,11 @@ vnoremap > >gv
 vnoremap < <gv
 
 " Color -----------------------------------
-set background=light
-if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
-endif
+"set background=light
+"if filereadable(expand("~/.vimrc_background"))
+    "let base16colorspace=256
+    "source ~/.vimrc_background
+"endif
 
 " Lightline  ------------------------------
 let g:lightline = {
