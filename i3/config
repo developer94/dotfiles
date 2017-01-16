@@ -153,7 +153,6 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   status_command i3status
-        tray_output primary
   colors {
     separator #666666
     background #222222
@@ -172,5 +171,13 @@ client.urgent #2f343a #900000 #ffffff #900000
 
 exec --no-startup-id "setxkbmap -model pc105 -layout us,hr -option grp:alt_shift_toggle"
 
-for_window [class="hyper"] border none
 hide_edge_borders smart
+
+# hyper terminal config
+for_window [class="hyper"] border 1pixel
+
+# opera config
+for_window [class="Opera"] border 1pixel
+
+# anki dialog
+for_window [class="anki" title="Add"] floating enable
