@@ -186,6 +186,9 @@ vnoremap < <gv
     "let base16colorspace=256
     "source ~/.vimrc_background
 "endif
+hi Folded ctermfg=15
+hi FoldedColumn ctermfg=15
+hi Search ctermbg=gray ctermfg=white
 
 " Lightline  ------------------------------
 let g:lightline = {
