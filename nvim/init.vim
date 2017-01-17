@@ -66,7 +66,7 @@ call dein#add('ternjs/tern_for_vim')
 " JSX
 call dein#add('mxw/vim-jsx')
 " Flow
-call dein#add('steelsojka/deoplete-flow')
+"call dein#add('steelsojka/deoplete-flow')
 " Typescript
 call dein#add('leafgarland/typescript-vim')
 " Angular2
