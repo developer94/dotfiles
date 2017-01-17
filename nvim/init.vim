@@ -110,7 +110,7 @@ let g:jedi#smart_auto_mappings = 0
 
 " C/C++ config ----------------------------
 let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header = "/usr/lib/clang/3.8.1/include"
+let g:deoplete#sources#clang#clang_header = "/usr/lib/clang/3.9.1/include"
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
