@@ -6,96 +6,93 @@ endif
 " Required:
 set runtimepath^=~/.config/nvim/bundle/repos/github.com/Shougo/dein.vim
 
-" Required:
-call dein#begin(expand('~/.config/nvim/bundle'))
+if dein#load_state(expand('~/.confing/nvim/bundle'))
+    call dein#begin(expand('~/.config/nvim/bundle'))
 
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+    " Let dein manage dein
+    call dein#add('Shougo/dein.vim')
+    call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
-" Add or remove your plugins here:
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('mattn/emmet-vim')
+    " Add or remove your plugins here:
+    call dein#add('Shougo/neosnippet.vim')
+    call dein#add('Shougo/neosnippet-snippets')
+    call dein#add('mattn/emmet-vim')
 
-call dein#add('nathanaelkane/vim-indent-guides')
+    call dein#add('nathanaelkane/vim-indent-guides')
 
-" Dev tools
-call dein#add('rking/ag.vim')
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('tpope/vim-fugitive')
-call dein#add('scrooloose/nerdcommenter')
-call dein#add('itchyny/lightline.vim')
-call dein#add('airblade/vim-gitgutter')
-call dein#add('gregsexton/gitv')
-call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-repeat')
-call dein#add('vim-scripts/matchit.zip')
-call dein#add('Shougo/neosnippet.vim')
+    " Dev tools
+    call dein#add('rking/ag.vim')
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('scrooloose/nerdcommenter')
+    call dein#add('itchyny/lightline.vim')
+    call dein#add('airblade/vim-gitgutter')
+    call dein#add('gregsexton/gitv')
+    call dein#add('tpope/vim-surround')
+    call dein#add('tpope/vim-repeat')
+    call dein#add('vim-scripts/matchit.zip')
+    call dein#add('Shougo/neosnippet.vim')
 
-" .NET
-call dein#add('OmniSharp/omnisharp-vim', {
-            \ 'build': 'sh -c "cd server/ && xbuild"',
-            \ 'on_ft': 'cs'
-            \ })
-call dein#add('https://gitlab.com/mixedCase/deoplete-omnisharp.git', {
-            \ 'on_ft': 'cs'
-            \ })
+    " .NET
+    call dein#add('OmniSharp/omnisharp-vim', {
+                \ 'build': 'sh -c "cd server/ && xbuild"',
+                \ 'on_ft': 'cs'
+                \ })
+    call dein#add('https://gitlab.com/mixedCase/deoplete-omnisharp.git', {
+                \ 'on_ft': 'cs'
+                \ })
 
-" git
-let g:gitgutter_max_signs=100000
+    " C/C++
+    call dein#add('zchee/deoplete-clang')
+    call dein#add('octol/vim-cpp-enhanced-highlight')
 
-" C/C++
-call dein#add('zchee/deoplete-clang')
-call dein#add('octol/vim-cpp-enhanced-highlight')
+    " Python
+    call dein#add('zchee/deoplete-jedi')
+    call dein#add('davidhalter/jedi-vim')
+    call dein#add('tmhedberg/SimpylFold')
+    call dein#add('heavenshell/vim-pydocstring')
+    call dein#add('Yggdroot/indentLine')
 
-" Python
-call dein#add('zchee/deoplete-jedi')
-call dein#add('davidhalter/jedi-vim')
-call dein#add('tmhedberg/SimpylFold')
-call dein#add('heavenshell/vim-pydocstring')
-call dein#add('Yggdroot/indentLine')
+    " PHP
+    "call dein#add('pjio/phpcomplete-extended')
 
-" PHP
-"call dein#add('pjio/phpcomplete-extended')
+    " Javascript
+    call dein#add('pangloss/vim-javascript')
+    call dein#add('ternjs/tern_for_vim')
+    " JSX
+    call dein#add('mxw/vim-jsx')
+    " Flow
+    "call dein#add('steelsojka/deoplete-flow')
+    " Typescript
+    call dein#add('leafgarland/typescript-vim')
+    " Angular2
+    call dein#add('magarcia/vim-angular2-snippets')
+    " JSON
+    call dein#add('elzr/vim-json')
 
-" Javascript
-call dein#add('pangloss/vim-javascript')
-call dein#add('ternjs/tern_for_vim')
-" JSX
-call dein#add('mxw/vim-jsx')
-" Flow
-"call dein#add('steelsojka/deoplete-flow')
-" Typescript
-call dein#add('leafgarland/typescript-vim')
-" Angular2
-call dein#add('magarcia/vim-angular2-snippets')
-" JSON
-call dein#add('elzr/vim-json')
+    " Utility
+    call dein#add('neomake/neomake')
+    call dein#add('ctrlpvim/ctrlp.vim')
+    call dein#add('editorconfig/editorconfig-vim')
+    call dein#add('easymotion/vim-easymotion')
 
-" Utility
-call dein#add('neomake/neomake')
-call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('editorconfig/editorconfig-vim')
-call dein#add('easymotion/vim-easymotion')
+    " Syntax plugins
+    call dein#add('jwalton512/vim-blade')
+    call dein#add('digitaltoad/vim-pug')
+    call dein#add('lepture/vim-jinja')
 
-" Syntax plugins
-call dein#add('jwalton512/vim-blade')
-call dein#add('digitaltoad/vim-pug')
-call dein#add('lepture/vim-jinja')
+    " Aestethics
+    call dein#add('chriskempson/base16-vim')
+    "call dein#add('altercation/vim-colors-solarized')
+    call dein#add('lifepillar/vim-solarized8')
+    call dein#add('Ardakilic/vim-tomorrow-night-theme')
 
-" Aestethics
-call dein#add('chriskempson/base16-vim')
-"call dein#add('altercation/vim-colors-solarized')
-call dein#add('lifepillar/vim-solarized8')
-call dein#add('Ardakilic/vim-tomorrow-night-theme')
+    " You can specify revision/branch/tag.
+    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
-" You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
-" Required:
-call dein#end()
+    call dein#end()
+    call dein#save_state()
+endif
 
 " Required:
 filetype plugin indent on
@@ -225,4 +222,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 set conceallevel=0
+
+" git
+let g:gitgutter_max_signs=100000
 
