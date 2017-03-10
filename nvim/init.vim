@@ -56,6 +56,9 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     " PHP
     "call dein#add('pjio/phpcomplete-extended')
 
+    " Rust
+    call dein#add('rust-lang/rust.vim')
+
     " Javascript
     call dein#add('pangloss/vim-javascript')
     call dein#add('ternjs/tern_for_vim')
@@ -117,10 +120,17 @@ endif
 
 " Neomake ---------------------------------
 autocmd! BufWritePost * Neomake
+" let g:neomake_open_list = 2
+let g:neomake_list_height = 5
 
-    " Neomake python config
+    " python config
     let g:neomake_python_enabled_makers = ['pylint']
-    let g:neomake_javascriot_enabled_makers = ['flow','eslint']
+
+    " javascript config
+    let g:neomake_javascript_enabled_makers = ['flow','eslint']
+
+    " rust config
+    let g:neomake_rust_enabled_makers = ['cargo', 'rustc']
 "------------------------------------------
 
 " Deoplete --------------------------------
@@ -226,3 +236,19 @@ set conceallevel=0
 " git
 let g:gitgutter_max_signs=100000
 
+" Leader shortcuts
+    " copy/paste
+    vmap <Leader>y "+y
+    vmap <Leader>d "+d
+    nmap <Leader>p "+p
+    nmap <Leader>P "+P
+    vmap <Leader>p "+p
+    vmap <Leader>P "+P
+
+    " saving/opening
+    nnoremap <Leader>o :CtrlP<CR>
+    nnoremap <Leader>w :w<CR>
+
+" config editing
+command! Config :e ~/.config/nvim/init.vim
+command! ReloadConfig :source ~/.config/nvim/init.vim
