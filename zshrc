@@ -69,10 +69,6 @@ else
   export EDITOR='nvim'
 fi
 
-# if termite is available, rely on it - via i3-sensible-terminal
-# the next expected option (urxvt) is implemented in the i3-sensible-terminal itself
-export TERMINAL='termite'
-
 export BROWSER='opera'
 
 # Compilation flags
