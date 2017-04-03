@@ -101,8 +101,8 @@ endif
 filetype plugin indent on
 
 " Python config ---------------------------
-let g:python2_host_prog = '/home/j/.pyenv/versions/2.7.11/bin/python'
-let g:python3_host_prog = '/home/j/.pyenv/versions/3.5.1/bin/python'
+let g:python2_host_prog = '/home/j/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/j/.pyenv/versions/neovim3/bin/python'
 " Jedi
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures_delay = 2000
