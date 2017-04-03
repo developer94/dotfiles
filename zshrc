@@ -88,3 +88,4 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
+alias mount="mount -o umask=0022,gid=1000,uid=1000"
