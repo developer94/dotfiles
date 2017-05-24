@@ -180,6 +180,12 @@ endif
 " Nerd commenter --------------------------
 let g:NERDCustomDelimiters = { 'jinja.html': { 'left': '{#','right': '#}' } }
 
+" Nerd tree -------------------------------
+nnoremap <Tab> :NERDTreeToggle<CR>
+
+" FZF config
+nnoremap <C-p> :FZF<CR>
+
 " CtrlP -----------------------------------
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 'ra'
