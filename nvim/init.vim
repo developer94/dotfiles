@@ -22,6 +22,7 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
 
     " Dev tools
     call dein#add('rking/ag.vim')
+    call dein#add('scrooloose/nerdtree')
     call dein#add('Shougo/deoplete.nvim')
     call dein#add('tpope/vim-fugitive')
     call dein#add('scrooloose/nerdcommenter')
