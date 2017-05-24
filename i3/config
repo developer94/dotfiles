@@ -181,3 +181,11 @@ for_window [class="Opera"] border 1pixel
 
 # anki dialog
 for_window [class="anki" title="Add"] floating enable
+
+# ------ gotta go fast
+# enable the marks
+show_marks yes
+bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
+bindsym $mod+apostrophe exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+# enable back and forth
+workspace_auto_back_and_forth yes
