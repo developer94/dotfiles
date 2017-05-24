@@ -76,7 +76,8 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
 
     " Utility
     call dein#add('neomake/neomake')
-    call dein#add('ctrlpvim/ctrlp.vim')
+    call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
+    "call dein#add('ctrlpvim/ctrlp.vim')
     call dein#add('editorconfig/editorconfig-vim')
     call dein#add('easymotion/vim-easymotion')
 
