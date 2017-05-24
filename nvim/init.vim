@@ -196,6 +196,10 @@ vnoremap > >gv
 vnoremap < <gv
 
 " Color -----------------------------------
+" -- find out highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 "set background=light
 "if filereadable(expand("~/.vimrc_background"))
     "let base16colorspace=256
