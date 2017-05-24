@@ -14,6 +14,11 @@ URxvt.keysym.End: \033[8~
 URxvt.keysym.KP_Home: \033[1~
 URxvt.keysym.KP_End:  \033[4~
 
+URxvt.keysym.M-Down: \033[1;5B
+URxvt.keysym.M-Up: \033[1;5A
+URxvt.keysym.M-Left: \033[1;5D
+URxvt.keysym.M-Right: \033[1;5C
+
 XTerm*termName: xterm-256color
 URxvt*termName: rxvt-unicode-256color
 
