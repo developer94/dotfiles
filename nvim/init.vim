@@ -208,6 +208,9 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 hi Folded ctermfg=15
 hi FoldedColumn ctermfg=15
 hi Search ctermbg=gray ctermfg=white
+hi VertSplit ctermbg=0 ctermfg=15
+hi Search ctermbg=4 ctermfg=15
+hi Todo ctermfg=11 ctermbg=15
 
 " Lightline  ------------------------------
 let g:lightline = {
