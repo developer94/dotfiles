@@ -20,7 +20,7 @@ fi
 export EDITOR='nano'
 export VISUAL='nano'
 export PAGER='less'
-export TERMINAL='termite'
+export TERMINAL='urxvt'
 
 #
 # Language
