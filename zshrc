@@ -79,6 +79,22 @@ export BROWSER='opera'
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+# rvm setup
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# source ~/.rvm/scripts/rvm
+
+# npm setup
+export PATH="$PATH:$HOME/.npm/bin"
+
+# arcanist setup
+export PATH="$PATH:$HOME/src/arcanist/arcanist/bin"
+
+# xc8 setup
+export PATH="$PATH:/opt/microchip/xc8/v1.34/bin/"
+
+# fix vim delay bindings for zsh
+export KEYTIMEOUT=1
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
