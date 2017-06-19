@@ -17,6 +17,9 @@ eval "$(pyenv virtualenv-init -)"
 # npm path
 export PATH="$HOME/.npm-global/bin:$PATH"
 
+# golang path
+export PATH="$PATH:$HOME/.go/bin"
+
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"
 
