@@ -216,6 +216,8 @@ hi Search ctermbg=gray ctermfg=white
 hi VertSplit ctermbg=0 ctermfg=15
 hi Search ctermbg=4 ctermfg=15
 hi Todo ctermfg=11 ctermbg=15
+hi ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 " Lightline  ------------------------------
 let g:lightline = {
