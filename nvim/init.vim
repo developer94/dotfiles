@@ -34,6 +34,10 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('vim-scripts/matchit.zip')
     call dein#add('Shougo/neosnippet.vim')
 
+    " Doc tools
+    call dein#add('aklt/plantuml-syntax')
+    call dein#add('suan/vim-instant-markdown')
+
     " .NET
     call dein#add('OmniSharp/omnisharp-vim', {
                 \ 'build': 'sh -c "cd server/ && xbuild"',
