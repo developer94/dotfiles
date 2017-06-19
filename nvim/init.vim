@@ -84,6 +84,7 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     "call dein#add('ctrlpvim/ctrlp.vim')
     call dein#add('editorconfig/editorconfig-vim')
     call dein#add('easymotion/vim-easymotion')
+    call dein#add('tpope/tpope-vim-abolish')
 
     " Syntax plugins
     call dein#add('jwalton512/vim-blade')
