@@ -161,7 +161,7 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 let mapleader = "\<Space>"
 nnoremap <leader><Space> za
-nnoremap <leader>b :b #<CR>
+nnoremap <leader>v :b #<CR>
 
 " Neosnippet
 " Plugin key-mappings.
