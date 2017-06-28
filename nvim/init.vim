@@ -140,6 +140,12 @@ let g:neomake_list_height = 5
 
     " rust config
     let g:neomake_rust_enabled_makers = ['cargo', 'rustc']
+
+nmap <Leader><Space>o :lopen<CR>
+nmap <Leader><Space>c :lclose<CR>
+nmap <Leader><Space><Space> :ll<CR>
+nmap <Leader><Space>n :lnext<CR>
+nmap <Leader><Space>p :lprev<CR>
 "------------------------------------------
 
 " Deoplete --------------------------------
