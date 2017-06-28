@@ -33,6 +33,7 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('tpope/vim-repeat')
     call dein#add('vim-scripts/matchit.zip')
     call dein#add('Shougo/neosnippet.vim')
+    call dein#add('majutsushi/tagbar')
 
     " Doc tools
     call dein#add('aklt/plantuml-syntax')
@@ -168,6 +169,10 @@ nnoremap <leader>v :b #<CR>
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" Tagbar
+" key-mappings:
+nmap <F8> :TagbarToggle<CR>
 
 " SuperTab like snippets behavior.
 "imap <expr><TAB>
