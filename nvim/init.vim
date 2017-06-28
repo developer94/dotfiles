@@ -171,6 +171,12 @@ let mapleader = "\<Space>"
 nnoremap <leader><Space> za
 nnoremap <leader>v :b #<CR>
 
+" Split movement mappings
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+
 " Neosnippet
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
