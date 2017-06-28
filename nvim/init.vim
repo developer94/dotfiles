@@ -286,7 +286,7 @@ let g:gitgutter_max_signs=100000
     vmap <Leader>P "+P
 
     " saving/opening
-    nnoremap <Leader>o :CtrlP<CR>
+    nnoremap <Leader>o :FZF<CR>
     nnoremap <Leader>w :w<CR>
 
 " config editing
