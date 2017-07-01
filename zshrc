@@ -107,3 +107,4 @@ alias vim="nvim"
 alias mount="mount -o umask=0022,gid=1000,uid=1000"
 
 export GOPATH="$HOME/.go"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
