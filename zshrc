@@ -69,7 +69,7 @@ else
   export EDITOR='nvim'
 fi
 
-export BROWSER='opera'
+export BROWSER='chromium'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

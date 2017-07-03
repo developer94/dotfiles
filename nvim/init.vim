@@ -58,7 +58,6 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('zchee/deoplete-jedi')
     call dein#add('davidhalter/jedi-vim')
     call dein#add('tmhedberg/SimpylFold')
-    call dein#add('heavenshell/vim-pydocstring')
     call dein#add('Yggdroot/indentLine')
 
     " PHP

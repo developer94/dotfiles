@@ -1,5 +1,5 @@
 xset r rate 200
-xrdb ~/.Xresources
+xrdb -load ~/.Xresources
 
 setxkbmap us
 
