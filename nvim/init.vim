@@ -34,7 +34,7 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('vim-scripts/matchit.zip')
     call dein#add('Shougo/neosnippet.vim')
     call dein#add('majutsushi/tagbar')
-    call dein#add('viking/vim-alt')
+    call dein#add('tpope/vim-projectionist')
 
     " Doc tools
     call dein#add('aklt/plantuml-syntax')
