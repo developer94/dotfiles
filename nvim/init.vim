@@ -38,7 +38,6 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
 
     " Doc tools
     call dein#add('aklt/plantuml-syntax')
-    call dein#add('suan/vim-instant-markdown')
     call dein#add('scrooloose/vim-slumlord')
 
     " .NET
