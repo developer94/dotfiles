@@ -207,6 +207,7 @@ nnoremap <Tab> :NERDTreeToggle<CR>
 
 " FZF config
 nnoremap <C-p> :FZF<CR>
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " CtrlP -----------------------------------
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
