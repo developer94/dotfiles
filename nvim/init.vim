@@ -180,6 +180,10 @@ let mapleader = "\<Space>"
 nnoremap <leader><Space> za
 nnoremap <leader>v :b #<CR>
 
+" Semantic Highlighting -------------------
+nnoremap <leader>s :SemanticHighlightToggle<CR>
+let g:semanticTermColors = [2,3,1,4,5,6,9,10,11,12,13,14,16,111,208,74,140,21,22,171,130,92]
+
 " Split movement mappings
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
@@ -302,3 +306,18 @@ let g:gitgutter_max_signs=100000
 " config editing
 command! Config :e ~/.config/nvim/init.vim
 command! ReloadConfig :source ~/.config/nvim/init.vim
+
+" environment related config
+source ~/.config/nvim/environment.vim
+
+" utility
+" show highlight under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" colorscheme
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
