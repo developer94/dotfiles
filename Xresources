@@ -7,6 +7,13 @@ URxvt.scrollTtyOutput:  false
 URxvt.scrollTtyKeypress:true
 URxvt.scrollWithBuffer: true
 
+URxvt.keysm.M-s: perl:keyboard-select:activate
+URxvt.keysm.M-r: perl:keyboard-select:search
+
+URxvt.keysm.M-u: perl:url-select:select_next
+URxvt.url-select.underline: true
+URxvt.url-select.launcher: chromium
+
 URxvt*fading:           0
 
 URxvt.keysym.Home: \033[7~
