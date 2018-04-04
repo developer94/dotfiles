@@ -185,3 +185,11 @@ for_window [class="anki" title="Add"] floating enable
 show_marks yes
 bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
 bindsym $mod+apostrophe exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+
+# move workspace across screens
+bindsym $mod+x move workspace to output left
+bindsym $mod+c move workspace to output right
+
+# move container across screens
+bindsym $mod+Control+left move container to output left
+bindsym $mod+Control+right move container to output right
