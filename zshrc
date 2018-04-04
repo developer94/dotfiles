@@ -103,8 +103,52 @@ export KEYTIMEOUT=1
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
+alias vim='nvim'
+alias fim='nvim $(fzf --preview '"'"'[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"'"')'
 alias mount="mount -o umask=0022,gid=1000,uid=1000"
+alias cgrep="grep -C 10"
 
 export GOPATH="$HOME/.go"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Set SSH to use gpg-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+fi
+
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
+# ansible module opener
+function ansible-module {
+    open_command "https://docs.ansible.com/ansible/latest/$1_module.html"
+}
+
+# terraform aws data source opener
+function tfd {
+    open_command "https://www.terraform.io/docs/providers/aws/d/$1.html"
+}
+
+# terraform aws resource opener
+function tfr {
+    open_command "https://www.terraform.io/docs/providers/aws/r/$1.html"
+}
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias i3lock="i3lock -i ~/pictures/desktop.png -u -p default"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/j/google-cloud-sdk/path.zsh.inc' ]; then source '/home/j/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/j/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/j/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Autoenv
+source /usr/share/autoenv/activate.sh
+
+# Base 16
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
