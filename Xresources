@@ -1,5 +1,5 @@
-URxvt.font:             xft:Hack:size=10
-URxvt.letterSpace:      -2
+URxvt.font:             xft:Fira Code Retina:size=10
+URxvt.letterSpace:      -1
 URxvt.intensityStyles:  false
 
 URxvt.scrollBar:        false
