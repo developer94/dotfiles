@@ -1,9 +1,9 @@
 rofi.modi: run,ssh,window
 
-rofi.terminal:                      i3-sensible-terminal                                 
-rofi.ssh-client:                    ssh                                                  
-rofi.ssh-command:                   {terminal} -e "{ssh-client} {host}"                  
-rofi.run-command:                   {cmd}                                                
+rofi.terminal:                      i3-sensible-terminal
+rofi.ssh-client:                    ssh
+rofi.ssh-command:                   {terminal} -e "{ssh-client} {host}"
+rofi.run-command:                   {cmd}
 rofi.run-shell-command:             {terminal} -e sh -c "{cmd};${SHELL:-bash}"
 
 rofi.sidebar-mode:                  true
