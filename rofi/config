@@ -10,10 +10,14 @@ rofi.run-shell-command:             {terminal} -e sh -c "{cmd};${SHELL:-bash}"
 
 rofi.sidebar-mode:                  true
 rofi.show-icons:                    true
+
+rofi.matching:                      fuzzy
+rofi.sort:                          true
 rofi.levenshtein-sort:              true
+rofi.threads:                       4
+
 rofi.parse-hosts:                   true
 rofi.parse-known-hosts:             true
-rofi.threads:                       4
 
 rofi.kb-row-select:                 Tab
 rofi.kb-row-tab:
