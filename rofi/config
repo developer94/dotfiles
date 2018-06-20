@@ -1,4 +1,4 @@
-rofi.modi:                          combi,ssh,mark:i3-marks
+rofi.modi:                          combi,ssh,mark:i3-marks,ansible:ansible-module
 rofi.show:                          combi
 rofi.combi-modi:                    run,ssh,mark:i3-marks
 
