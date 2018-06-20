@@ -14,3 +14,6 @@ rofi.levenshtein-sort:              true
 rofi.parse-hosts:                   true
 rofi.parse-known-hosts:             true
 rofi.threads:                       4
+
+rofi.kb-row-select:                 Tab
+rofi.kb-row-tab:
