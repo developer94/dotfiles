@@ -1,4 +1,6 @@
-rofi.modi: run,ssh,window
+rofi.modi:                          combi,ssh,mark:i3-marks
+rofi.show:                          combi
+rofi.combi-modi:                    run,ssh,mark:i3-marks
 
 rofi.terminal:                      i3-sensible-terminal
 rofi.ssh-client:                    ssh
