@@ -188,7 +188,7 @@ show_marks yes
 bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
 # switch apostrophe for p, since muscle memory kicks in faster when not
 # positioned at jkl;
-bindsym $mod+p exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+bindsym $mod+p exec rofi -show mark
 
 # move workspace across screens
 bindsym $mod+x move workspace to output left
