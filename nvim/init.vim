@@ -48,15 +48,6 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('aklt/plantuml-syntax')
     call dein#add('scrooloose/vim-slumlord')
 
-    " .NET
-    call dein#add('OmniSharp/omnisharp-vim', {
-                \ 'build': 'sh -c "cd server/ && xbuild"',
-                \ 'on_ft': 'cs'
-                \ })
-    call dein#add('https://gitlab.com/mixedCase/deoplete-omnisharp.git', {
-                \ 'on_ft': 'cs'
-                \ })
-
     " C/C++
     call dein#add('zchee/deoplete-clang')
     call dein#add('octol/vim-cpp-enhanced-highlight')
