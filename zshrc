@@ -101,8 +101,11 @@ export KEYTIMEOUT=1
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
 alias fim='nvim $(fzf --preview '"'"'[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"'"')'
+alias f='cat $(fzf --preview '"'"'[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"'"')'
+alias c='xclip -selection clipboard $(fzf --preview '"'"'[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"'"')'
 alias mount="mount -o umask=0022,gid=1000,uid=1000"
 alias cgrep="grep -C 10"
+alias tree="tree -L 2"
 
 export GOPATH="$HOME/.go"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
