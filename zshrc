@@ -57,6 +57,10 @@ plugins=(git wd docker web-search)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
