@@ -172,6 +172,11 @@ let mapleader = "\<Space>"
 nnoremap <leader><Space> za
 nnoremap <leader>v :b #<CR>
 
+hi ExtraWhitespace ctermbg=red guibg=red
+" needs to be put before setting a colorscheme
+au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/
+
 " Semantic Highlighting -------------------
 nnoremap <leader>s :SemanticHighlightToggle<CR>
 let g:semanticTermColors = [2,3,1,4,5,6,9,10,11,12,13,14,16,111,208,74,140,21,22,171,130,92]
@@ -240,8 +245,6 @@ hi Search ctermbg=gray ctermfg=white
 hi VertSplit ctermbg=0 ctermfg=15
 hi Search ctermbg=4 ctermfg=15
 hi Todo ctermfg=11 ctermbg=15
-hi ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
 
 " Lightline  ------------------------------
 let g:lightline = {
