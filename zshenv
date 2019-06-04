@@ -14,10 +14,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# npm
-npm config set prefix ~/.npm/
-export PATH="$HOME/.npm-global/bin:$PATH"
-
 # golang path
 export PATH="$PATH:$HOME/.go/bin"
 
