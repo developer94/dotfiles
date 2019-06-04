@@ -301,10 +301,7 @@ let g:gitgutter_max_signs=100000
 " config editing
 command! Config :e ~/.config/nvim/init.vim
 command! ReloadConfig :source ~/.config/nvim/init.vim
-
-" environment related config
-source ~/.config/nvim/environment.vim
-
+"
 " utility
 " show highlight under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -316,3 +313,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
+" environment related config
+source ~/.config/nvim/environment.vim
