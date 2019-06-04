@@ -58,6 +58,7 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('tmhedberg/SimpylFold')
     call dein#add('Yggdroot/indentLine')
     call dein#add('vim-python/python-syntax')
+    call dein#add('heavenshell/vim-pydocstring')
 
     " PHP
     "call dein#add('pjio/phpcomplete-extended')
