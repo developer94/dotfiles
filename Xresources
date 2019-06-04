@@ -1,4 +1,4 @@
-URxvt.font:             xft:Fira Code Retina:size=10
+URxvt.font:             xft:Fira Code Retina:size=11
 URxvt.letterSpace:      -1
 URxvt.intensityStyles:  false
 
