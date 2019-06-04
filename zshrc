@@ -88,15 +88,6 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # source ~/.rvm/scripts/rvm
 
-# npm setup
-export PATH="$PATH:$HOME/.npm/bin"
-
-# arcanist setup
-export PATH="$PATH:$HOME/src/arcanist/arcanist/bin"
-
-# xc8 setup
-export PATH="$PATH:/opt/microchip/xc8/v1.34/bin/"
-
 # fix vim delay bindings for zsh
 export KEYTIMEOUT=1
 
