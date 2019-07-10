@@ -62,7 +62,6 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('Yggdroot/indentLine')
     call dein#add('vim-python/python-syntax')
     call dein#add('heavenshell/vim-pydocstring')
-    call dein#add('python/black', {'on_cmd': 'Black'})
     call dein#add('fisadev/vim-isort')
 
     " PHP
@@ -138,8 +137,8 @@ nnoremap <silent> <leader>ts :TestSuite<CR>
 nnoremap <silent> <leader>tt :TestLast<CR>
 nnoremap <silent> <leader>tv :TestVisit<CR>
 " Black
-"autocmd BufWritePre *.py execute ':Black'
-nnoremap <silent> <leader>bb :Black<CR>
+setlocal formatprg=black\ -q\ -
+nnoremap <silent> <leader>bb gggqG
 " isort
 let g:vim_isort_map = '<C-i>'
 
