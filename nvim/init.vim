@@ -39,6 +39,7 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('tpope/vim-projectionist')
     call dein#add('jaxbot/semantic-highlight.vim')
     call dein#add('severin-lemaignan/vim-minimap')
+    call dein#add('janko-m/vim-test')
 
     " Ops tools
     call dein#add('hashivim/vim-terraform')
@@ -46,7 +47,9 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
 
     " Doc tools
     call dein#add('aklt/plantuml-syntax')
+    call dein#add('aklt/plantuml-syntax')
     call dein#add('scrooloose/vim-slumlord')
+    "call dein#add('plasticboy/vim-markdown')
 
     " C/C++
     call dein#add('zchee/deoplete-clang')
@@ -59,6 +62,8 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('Yggdroot/indentLine')
     call dein#add('vim-python/python-syntax')
     call dein#add('heavenshell/vim-pydocstring')
+    call dein#add('python/black', {'on_cmd': 'Black'})
+    call dein#add('fisadev/vim-isort')
 
     " PHP
     "call dein#add('pjio/phpcomplete-extended')
@@ -87,6 +92,7 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('editorconfig/editorconfig-vim')
     call dein#add('easymotion/vim-easymotion')
     call dein#add('tpope/tpope-vim-abolish')
+    call dein#add('guns/xterm-color-table.vim')
 
     " Syntax plugins
     call dein#add('jwalton512/vim-blade')
@@ -107,6 +113,13 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#save_state()
 endif
 
+" If you want to install not installed plugins on startup.
+" if dein#check_install()
+"   call dein#install()
+" endif
+" End dein Scripts-------------------------
+
+
 " Required:
 filetype plugin indent on
 
@@ -117,30 +130,36 @@ let g:python3_host_prog = '/home/j/.pyenv/versions/neovim3/bin/python'
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures_delay = 2000
 let g:jedi#smart_auto_mappings = 0
+" Tests
+let test#python#runner = 'pytest'
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>tt :TestLast<CR>
+nnoremap <silent> <leader>tv :TestVisit<CR>
+" Black
+"autocmd BufWritePre *.py execute ':Black'
+nnoremap <silent> <leader>bb :Black<CR>
+" isort
+let g:vim_isort_map = '<C-i>'
 
 " C/C++ config ----------------------------
 let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
 let g:deoplete#sources#clang#clang_header = "/usr/lib/clang/3.9.1/include"
 
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-" End dein Scripts-------------------------
-
 " Neomake ---------------------------------
 autocmd! BufWritePost * Neomake
+
 " let g:neomake_open_list = 2
 let g:neomake_list_height = 5
+" python config
+let g:neomake_python_enabled_makers = ['flake8']
 
-    " python config
-    let g:neomake_python_enabled_makers = ['pylint']
+" javascript config
+let g:neomake_javascript_enabled_makers = ['flow','eslint']
 
-    " javascript config
-    let g:neomake_javascript_enabled_makers = ['flow','eslint']
-
-    " rust config
-    let g:neomake_rust_enabled_makers = ['cargo', 'rustc']
+" rust config
+let g:neomake_rust_enabled_makers = ['cargo', 'rustc']
 
 nmap <Leader><Space>o :lopen<CR>
 nmap <Leader><Space>c :lclose<CR>
@@ -164,10 +183,10 @@ set shiftwidth=4
 set listchars=tab:>⟶
 set hidden
 set conceallevel=0
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
+" autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+" autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
+" autocmd Filetype html setlocal ts=2 sts=2 sw=2
+" autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 let mapleader = "\<Space>"
 nnoremap <leader><Space> za
 nnoremap <leader>v :b #<CR>
@@ -197,19 +216,6 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " key-mappings:
 nmap <F8> :TagbarToggle<CR>
 
-" SuperTab like snippets behavior.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
 " Nerd commenter --------------------------
 let g:NERDCustomDelimiters = { 'jinja.html': { 'left': '{#','right': '#}' } }
 
@@ -234,22 +240,11 @@ vnoremap < <gv
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-"set background=light
-"if filereadable(expand("~/.vimrc_background"))
-    "let base16colorspace=256
-    "source ~/.vimrc_background
-"endif
-hi Folded ctermfg=15
-hi FoldedColumn ctermfg=15
-hi Search ctermbg=gray ctermfg=white
-hi VertSplit ctermbg=0 ctermfg=15
-hi Search ctermbg=4 ctermfg=15
-hi Todo ctermfg=11 ctermbg=15
-
+"
 " Lightline  ------------------------------
-let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
-      \ }
+"let g:lightline = {
+      "\ 'colorscheme': 'PaperColor',
+      "\ }
 
 " PHP config ------------------------------
 let g:phpcomplete_index_composer_command='composer'
@@ -257,18 +252,6 @@ let g:phpcomplete_index_composer_command='composer'
 " Javascript config -----------------------
 let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
-
-" Flow config - choose local flow if available
-function! StrTrim(txt)
-  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-endfunction
-
-let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
-
-if g:flow_path != 'flow not found'
-  let g:deoplete#sources#flow#flow_bin = g:flow_path
-endif
-" End flow config -------------------------
 " End javascript config
 
 " Neosnippet config -----------------------
@@ -279,8 +262,6 @@ xmap <C-e>     <Plug>(neosnippet_expand_target)
 
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-set conceallevel=0
 
 " git
 let g:gitgutter_max_signs=100000
@@ -301,7 +282,7 @@ let g:gitgutter_max_signs=100000
 " config editing
 command! Config :e ~/.config/nvim/init.vim
 command! ReloadConfig :source ~/.config/nvim/init.vim
-"
+
 " utility
 " show highlight under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -313,6 +294,30 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
+
+hi Folded ctermfg=15
+hi FoldedColumn ctermfg=15
+hi Search ctermbg=gray ctermfg=white
+hi VertSplit ctermbg=0 ctermfg=15
+hi Search ctermbg=4 ctermfg=15
+hi Todo ctermfg=11 ctermbg=15
+
+hi pythonComment ctermfg=196 ctermbg=223
+hi pythonString ctermfg=22 ctermbg=193
+
+" highlight the word under cursor
+" setl updatetime=300
+" highlight WordUnderCursor cterm=underline gui=underline
+" autocmd CursorHold * call HighlightCursorWord()
+" function! HighlightCursorWord()
+"     " if hlsearch is active, don't overwrite it!
+"     let search = getreg('/')
+"     let cword = expand('<cword>')
+"     if match(cword, search) == -1
+"         exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
+"     endif
+" endfunction
 
 " environment related config
 source ~/.config/nvim/environment.vim
