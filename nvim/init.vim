@@ -122,6 +122,7 @@ endif
 " Required:
 filetype plugin indent on
 
+let mapleader = "\<Space>"
 " Python config ---------------------------
 let g:python_host_prog = '/home/j/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/home/j/.pyenv/versions/neovim3/bin/python'
@@ -186,8 +187,6 @@ set conceallevel=0
 " autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
 " autocmd Filetype html setlocal ts=2 sts=2 sw=2
 " autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
-let mapleader = "\<Space>"
-nnoremap <leader><Space> za
 nnoremap <leader>v :b #<CR>
 
 hi ExtraWhitespace ctermbg=red guibg=red
