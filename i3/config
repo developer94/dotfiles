@@ -199,7 +199,6 @@ bindsym $mod+Control+left move container to output left
 bindsym $mod+Control+right move container to output right
 
 bindsym $mod+Tab exec echo -ne "swap_focus" | nc -w0 -U "$XDG_RUNTIME_DIR/i3/event-listener.sock"
-bindsym $mod+Tab workspace back_and_forth
 
 exec --no-startup-id event-listener
 
