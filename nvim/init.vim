@@ -49,6 +49,8 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('aklt/plantuml-syntax')
     call dein#add('aklt/plantuml-syntax')
     call dein#add('scrooloose/vim-slumlord')
+    call dein#add('junegunn/goyo.vim')
+    call dein#add('junegunn/limelight.vim')
     "call dein#add('plasticboy/vim-markdown')
 
     " C/C++
@@ -188,6 +190,8 @@ set conceallevel=0
 " autocmd Filetype html setlocal ts=2 sts=2 sw=2
 " autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 nnoremap <leader>v :b #<CR>
+
+let g:limelight_conceal_ctermfg = 'LightGrey'
 
 hi ExtraWhitespace ctermbg=red guibg=red
 " needs to be put before setting a colorscheme
