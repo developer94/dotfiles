@@ -15,7 +15,9 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # golang path
-export PATH="$PATH:$HOME/.go/bin"
+export GOROOT="$HOME/.go/root"
+export GOPATH="$HOME/.go/get"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"

@@ -200,11 +200,16 @@ bindsym $mod+Control+right move container to output right
 
 bindsym $mod+Tab exec echo -ne "swap_focus" | nc -w0 -U "$XDG_RUNTIME_DIR/i3/event-listener.sock"
 
+workspace 1 output HDMI-A-0
+workspace 2 output DisplayPort-0
+
+# bindsym $mod+Tab exec echo -ne "swap_focus" | nc -w0 -U "$XDG_RUNTIME_DIR/i3/event-listener.sock"
 exec --no-startup-id event-listener
 
 # utlity: flameshot
 bindsym Print exec flameshot gui
 for_window [class="flameshot"] floating enable
+for_window [class="pomodoneapp"] move position 100 900
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0

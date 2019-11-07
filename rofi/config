@@ -1,4 +1,4 @@
-rofi.modi:                          combi,ssh,mark:i3-marks,ansible:ansible-module
+rofi.modi:                          combi,ssh,mark:i3-marks,ansible:ansible-module,jira:jira
 rofi.show:                          combi
 rofi.combi-modi:                    run,ssh,mark:i3-marks
 
@@ -12,12 +12,12 @@ rofi.sidebar-mode:                  true
 rofi.show-icons:                    true
 
 rofi.matching:                      fuzzy
-rofi.sort:                          true
-rofi.levenshtein-sort:              true
+rofi.sort:                          false
+rofi.levenshtein-sort:              false
 rofi.threads:                       4
 
-rofi.parse-hosts:                   true
+rofi.parse-hosts:                   false
 rofi.parse-known-hosts:             true
 
-rofi.kb-row-select:                 Tab
-rofi.kb-row-tab:
+#rofi.kb-row-select:                 Tab
+#rofi.kb-row-tab:

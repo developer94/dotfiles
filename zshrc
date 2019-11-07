@@ -2,12 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/j/.oh-my-zsh
+export ZSH=/home/j/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster-light"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -70,8 +70,10 @@ bindkey '^x^e' edit-command-line
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
+  export VISUAL='vim'
 else
   export EDITOR='nvim'
+  export VISUAL='nvim'
 fi
 
 export BROWSER='chromium'
@@ -107,7 +109,6 @@ alias mount="mount -o umask=0022,gid=1000,uid=1000"
 alias cgrep="grep -C 10"
 alias tree="tree -L 2"
 
-export GOPATH="$HOME/.go"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Set SSH to use gpg-agent
@@ -134,8 +135,13 @@ function tfr {
     open_command "https://www.terraform.io/docs/providers/aws/r/$1.html"
 }
 
+# jira ticket launcher
+#function jira {
+    #open_command "https://tradecrowd.atlassian.net/browse/$1"
+#}
+
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias i3lock="i3lock -i ~/pictures/desktop.png -u -p default"
+# alias i3lock="i3lock -i ~/pictures/desktop.png -u -p default"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/j/google-cloud-sdk/path.zsh.inc' ]; then source '/home/j/google-cloud-sdk/path.zsh.inc'; fi
@@ -143,11 +149,18 @@ if [ -f '/home/j/google-cloud-sdk/path.zsh.inc' ]; then source '/home/j/google-c
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/j/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/j/google-cloud-sdk/completion.zsh.inc'; fi
 
+# NVM
+# source /usr/share/nvm/init-nvm.sh
+
 # Autoenv
-source /usr/share/autoenv/activate.sh
+# source /usr/share/autoenv/activate.sh
+eval "$(direnv hook zsh)"
 
 # Base 16
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+alias tmux="TERM=screen-256color-bce tmux"
+
+export NVM_DIR="/home/j/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -13,11 +13,8 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('Shougo/dein.vim')
     call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
-    " Add or remove your plugins here:
     call dein#add('Shougo/neosnippet.vim')
     call dein#add('Shougo/neosnippet-snippets')
-    call dein#add('mattn/emmet-vim')
-
     call dein#add('nathanaelkane/vim-indent-guides')
 
     " Dev tools
@@ -27,7 +24,6 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('tpope/vim-fugitive')
     call dein#add('shumphrey/fugitive-gitlab.vim')
     call dein#add('scrooloose/nerdcommenter')
-    call dein#add('itchyny/lightline.vim')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('gregsexton/gitv')
     call dein#add('tpope/vim-surround', {'on_map': {'n': ['cs', 'ds', 'ys']}})
@@ -40,6 +36,13 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('jaxbot/semantic-highlight.vim')
     call dein#add('severin-lemaignan/vim-minimap')
     call dein#add('janko-m/vim-test')
+    call dein#add('tpope/vim-dispatch')
+    call dein#add('junegunn/vim-slash')
+    call dein#add('itchyny/lightline.vim')
+    call dein#add('daviesjamie/vim-base16-lightline')
+    call dein#add('mattboehm/vim-unstack')
+    call dein#add('mattn/emmet-vim')
+    " call dein#add('christoomey/vim-tmux-navigator')
 
     " Ops tools
     call dein#add('hashivim/vim-terraform')
@@ -65,6 +68,7 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
     call dein#add('vim-python/python-syntax')
     call dein#add('heavenshell/vim-pydocstring')
     call dein#add('fisadev/vim-isort')
+    call dein#add('numirias/semshi', {'do': ':UpdateRemotePlugins'})
 
     " PHP
     "call dein#add('pjio/phpcomplete-extended')
@@ -88,7 +92,8 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
 
     " Utility
     call dein#add('neomake/neomake')
-    call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
+    call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+    call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
     "call dein#add('ctrlpvim/ctrlp.vim')
     call dein#add('editorconfig/editorconfig-vim')
     call dein#add('easymotion/vim-easymotion')
@@ -102,8 +107,6 @@ if dein#load_state(expand('~/.confing/nvim/bundle'))
 
     " Aestethics
     call dein#add('chriskempson/base16-vim')
-    "call dein#add('altercation/vim-colors-solarized')
-    call dein#add('lifepillar/vim-solarized8')
     call dein#add('altercation/vim-colors-solarized')
     call dein#add('Ardakilic/vim-tomorrow-night-theme')
 
@@ -133,15 +136,20 @@ let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures_delay = 2000
 let g:jedi#smart_auto_mappings = 0
 " Tests
+" let test#strategy = 'neovim'
 let test#python#runner = 'pytest'
+let test#python#pytest#options = '-vv --pdb -x'
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>tf :TestFile<CR>
 nnoremap <silent> <leader>ts :TestSuite<CR>
 nnoremap <silent> <leader>tt :TestLast<CR>
 nnoremap <silent> <leader>tv :TestVisit<CR>
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
+
 " Black
-setlocal formatprg=black\ -q\ -
-nnoremap <silent> <leader>bb gggqG
+nnoremap <silent> <leader>bb mxgggqG`xzx
 " isort
 let g:vim_isort_map = '<C-i>'
 
@@ -172,6 +180,7 @@ nmap <Leader><Space>p :lprev<CR>
 
 " Deoplete --------------------------------
 let g:deoplete#enable_at_startup=1
+let g:deoplete#auto_complete_delay=100
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Neosnippet ------------------------------
@@ -179,6 +188,7 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Editor ----------------------------------
 set colorcolumn=120
+set foldopen-=block
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -192,6 +202,7 @@ set conceallevel=0
 nnoremap <leader>v :b #<CR>
 
 let g:limelight_conceal_ctermfg = 'LightGrey'
+nnoremap <leader>f :Goyo<CR>:Limelight!! 0.5<CR>
 
 hi ExtraWhitespace ctermbg=red guibg=red
 " needs to be put before setting a colorscheme
@@ -219,14 +230,20 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 nmap <F8> :TagbarToggle<CR>
 
 " Nerd commenter --------------------------
-let g:NERDCustomDelimiters = { 'jinja.html': { 'left': '{#','right': '#}' } }
 
 " Nerd tree -------------------------------
 nnoremap <Tab> :NERDTreeToggle<CR>
 
 " FZF config
-nnoremap <C-p> :FZF<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <M-Return> :Tags<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" Search (vim-slash)
+"noremap <plug>(slash-after) zz
+if has('timers')
+    noremap <expr> <plug>(slash-after) 'zz'.slash#blink(2, 50)
+endif
 
 " CtrlP -----------------------------------
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -242,11 +259,7 @@ vnoremap < <gv
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-"
-" Lightline  ------------------------------
-"let g:lightline = {
-      "\ 'colorscheme': 'PaperColor',
-      "\ }
+
 
 " PHP config ------------------------------
 let g:phpcomplete_index_composer_command='composer'
@@ -268,6 +281,16 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " git
 let g:gitgutter_max_signs=100000
 
+" tmux
+" let g:tmux_navigator_no_mappings = 1
+" let g:tmux_navigator_disable_when_zoomed = 1
+
+" nnoremap <silent> <A-j> :TmuxNavigateLeft<cr>
+" nnoremap <silent> <A-k> :TmuxNavigateDown<cr>
+" nnoremap <silent> <A-l> :TmuxNavigateUp<cr>
+" nnoremap <silent> <A-;> :TmuxNavigateRight<cr>
+" nnoremap <silent> <A-\> :TmuxNavigatePrevious<cr>
+
 " Leader shortcuts
     " copy/paste
     vmap <Leader>y "+y
@@ -285,41 +308,44 @@ let g:gitgutter_max_signs=100000
 command! Config :e ~/.config/nvim/init.vim
 command! ReloadConfig :source ~/.config/nvim/init.vim
 
-" utility
-" show highlight under cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
 " colorscheme
+set background=light
+set t_Co=256
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
 
+let g:lightline = {'colorscheme': 'base16'}
 
-hi Folded ctermfg=15
-hi FoldedColumn ctermfg=15
-hi Search ctermbg=gray ctermfg=white
-hi VertSplit ctermbg=0 ctermfg=15
-hi Search ctermbg=4 ctermfg=15
-hi Todo ctermfg=11 ctermbg=15
+function! MyCustomHighlights()  " colors are inverted because of base16-shell
+    hi semshiUnresolved ctermfg=black ctermbg=yellow
+    hi semshiParameterUnused ctermfg=91 ctermbg=122
+    hi semshiImported ctermfg=208 cterm=bold
+    hi semshiAttribute ctermfg=cyan cterm=bold
+    hi semshiSelf ctermfg=72
+    hi semshiSelected ctermfg=231 ctermbg=214 cterm=bold
 
-hi pythonComment ctermfg=196 ctermbg=223
-hi pythonString ctermfg=22 ctermbg=193
+    hi pythonComment ctermfg=196 ctermbg=223
+    " hi pythonString ctermfg=22 ctermbg=193
 
-" highlight the word under cursor
-" setl updatetime=300
-" highlight WordUnderCursor cterm=underline gui=underline
-" autocmd CursorHold * call HighlightCursorWord()
-" function! HighlightCursorWord()
-"     " if hlsearch is active, don't overwrite it!
-"     let search = getreg('/')
-"     let cword = expand('<cword>')
-"     if match(cword, search) == -1
-"         exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
-"     endif
-" endfunction
+    hi Folded ctermfg=white
+    hi NeomakeError ctermfg=white ctermbg=216
+    " hi FoldedColumn ctermfg=black
+    " hi VertSplit ctermbg=white ctermfg=black
+    hi IncSearch ctermfg=231 ctermbg=214 cterm=bold
+    hi Search ctermfg=231 ctermbg=214 cterm=bold
+    hi MatchParen ctermbg=165 ctermfg=black
+    " hi Todo ctermfg=11 ctermbg=black
+endfunction
+
+autocmd Filetype python call MyCustomHighlights()
+autocmd ColorScheme * call MyCustomHighlights()
+
+hi ExtraWhitespace ctermbg=red guibg=red
+" needs to be put before setting a colorscheme
+au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/
 
 " environment related config
 source ~/.config/nvim/environment.vim
