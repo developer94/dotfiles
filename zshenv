@@ -15,9 +15,12 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # golang path
-export GOROOT="$HOME/.go/root"
-export GOPATH="$HOME/.go/get"
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+#export GOROOT="$HOME/.go/root"
+#export GOPATH="$HOME/.go"
+#export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+
+# npm path
+export PATH="$PATH:$HOME/.npm/bin"
 
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -26,3 +29,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 alias swarmer="cd $HOME/projects/swarmer/src/server && \ 
                pyenv activate swarmer && \
                source .context.sh"
+
+# export GDK_SCALE=2
+# export GDK_DPI_SCALE=0.5
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1

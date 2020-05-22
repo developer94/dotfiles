@@ -3,142 +3,225 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+" CoC pre-config
+set hidden
+set nobackup
+set nowritebackup
+
+set cmdheight=2
+
+set updatetime=300
+
+set shortmess+=c
+
+set signcolumn=yes
+" end CoC pre-config
+
 " Required:
-set runtimepath^=~/.config/nvim/bundle/repos/github.com/Shougo/dein.vim
+call plug#begin()
 
-if dein#load_state(expand('~/.confing/nvim/bundle'))
-    call dein#begin(expand('~/.config/nvim/bundle'))
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'nathanaelkane/vim-indent-guides'
 
-    " Let dein manage dein
-    call dein#add('Shougo/dein.vim')
-    call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+" Dev tools
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+" call dein#add('Shougo/deoplete.nvim')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
+Plug 'tpope/vim-surround', {'on_map': {'n': ['cs', 'ds', 'ys']}}
+Plug 'tpope/vim-repeat', {'on_map': {'n': ['.']}}
+Plug 'tpope/vim-unimpaired', {'on_map': {'n': ['[a', ']a', '[A', ']A', '[b', ']b', '[B', ']B', '[l', ']l', '[L', ']L', '[<C-L>', ']<C-L>', '[q', ']q', '[Q', ']Q', '[<C-Q>', ']<C-Q>', '[t', ']t', '[T', ']T']}}
+Plug 'vim-scripts/matchit.zip', {'on_map': {'n': ['%']}}
+Plug 'Shougo/neosnippet.vim'
+Plug 'majutsushi/tagbar', {'on_map': {'n': ['F8']}}
+Plug 'tpope/vim-projectionist'
+Plug 'jaxbot/semantic-highlight.vim'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'janko-m/vim-test'
+Plug 'tpope/vim-dispatch'
+Plug 'junegunn/vim-slash'
+Plug 'itchyny/lightline.vim'
+Plug 'daviesjamie/vim-base16-lightline'
+Plug 'mattboehm/vim-unstack'
+Plug 'mattn/emmet-vim'
+Plug 'christoomey/vim-tmux-navigator'
 
-    call dein#add('Shougo/neosnippet.vim')
-    call dein#add('Shougo/neosnippet-snippets')
-    call dein#add('nathanaelkane/vim-indent-guides')
+" Ops tools
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
-    " Dev tools
-    call dein#add('rking/ag.vim')
-    call dein#add('scrooloose/nerdtree')
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('tpope/vim-fugitive')
-    call dein#add('shumphrey/fugitive-gitlab.vim')
-    call dein#add('scrooloose/nerdcommenter')
-    call dein#add('airblade/vim-gitgutter')
-    call dein#add('gregsexton/gitv')
-    call dein#add('tpope/vim-surround', {'on_map': {'n': ['cs', 'ds', 'ys']}})
-    call dein#add('tpope/vim-repeat', {'on_map': {'n': ['.']}})
-    call dein#add('tpope/vim-unimpaired', {'on_map': {'n': ['[a', ']a', '[A', ']A', '[b', ']b', '[B', ']B', '[l', ']l', '[L', ']L', '[<C-L>', ']<C-L>', '[q', ']q', '[Q', ']Q', '[<C-Q>', ']<C-Q>', '[t', ']t', '[T', ']T']}})
-    call dein#add('vim-scripts/matchit.zip', {'on_map': {'n': ['%']}})
-    call dein#add('Shougo/neosnippet.vim')
-    call dein#add('majutsushi/tagbar', {'on_map': {'n': ['F8']}})
-    call dein#add('tpope/vim-projectionist')
-    call dein#add('jaxbot/semantic-highlight.vim')
-    call dein#add('severin-lemaignan/vim-minimap')
-    call dein#add('janko-m/vim-test')
-    call dein#add('tpope/vim-dispatch')
-    call dein#add('junegunn/vim-slash')
-    call dein#add('itchyny/lightline.vim')
-    call dein#add('daviesjamie/vim-base16-lightline')
-    call dein#add('mattboehm/vim-unstack')
-    call dein#add('mattn/emmet-vim')
-    " call dein#add('christoomey/vim-tmux-navigator')
+" Doc tools
+Plug 'aklt/plantuml-syntax'
+Plug 'aklt/plantuml-syntax'
+Plug 'scrooloose/vim-slumlord'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'plasticboy/vim-markdown'
 
-    " Ops tools
-    call dein#add('hashivim/vim-terraform')
-    call dein#add('juliosueiras/vim-terraform-completion')
+" Python
+Plug 'tmhedberg/SimpylFold'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-python/python-syntax'
+Plug 'heavenshell/vim-pydocstring'
+Plug 'fisadev/vim-isort'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
-    " Doc tools
-    call dein#add('aklt/plantuml-syntax')
-    call dein#add('aklt/plantuml-syntax')
-    call dein#add('scrooloose/vim-slumlord')
-    call dein#add('junegunn/goyo.vim')
-    call dein#add('junegunn/limelight.vim')
-    "call dein#add('plasticboy/vim-markdown')
+" Rust
+Plug 'rust-lang/rust.vim'
 
-    " C/C++
-    call dein#add('zchee/deoplete-clang')
-    call dein#add('octol/vim-cpp-enhanced-highlight')
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components'
+Plug 'jparise/vim-graphql'
 
-    " Python
-    call dein#add('zchee/deoplete-jedi')
-    call dein#add('davidhalter/jedi-vim')
-    call dein#add('tmhedberg/SimpylFold')
-    call dein#add('Yggdroot/indentLine')
-    call dein#add('vim-python/python-syntax')
-    call dein#add('heavenshell/vim-pydocstring')
-    call dein#add('fisadev/vim-isort')
-    call dein#add('numirias/semshi', {'do': ':UpdateRemotePlugins'})
+" CSS
+Plug 'ap/vim-css-color'
 
-    " PHP
-    "call dein#add('pjio/phpcomplete-extended')
+" Utility
+Plug 'neomake/neomake'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'guns/xterm-color-table.vim'
 
-    " Rust
-    call dein#add('rust-lang/rust.vim')
+" Syntax plugins
+Plug 'jwalton512/vim-blade'
+Plug 'digitaltoad/vim-pug'
+Plug 'lepture/vim-jinja'
 
-    " Javascript
-    call dein#add('pangloss/vim-javascript')
-    call dein#add('ternjs/tern_for_vim')
-    " JSX
-    call dein#add('mxw/vim-jsx')
-    " Flow
-    "call dein#add('steelsojka/deoplete-flow')
-    " Typescript
-    call dein#add('leafgarland/typescript-vim')
-    " Angular2
-    call dein#add('magarcia/vim-angular2-snippets')
-    " JSON
-    call dein#add('elzr/vim-json')
+" Aestethics
+Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'Ardakilic/vim-tomorrow-night-theme'
 
-    " Utility
-    call dein#add('neomake/neomake')
-    call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-    call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-    "call dein#add('ctrlpvim/ctrlp.vim')
-    call dein#add('editorconfig/editorconfig-vim')
-    call dein#add('easymotion/vim-easymotion')
-    call dein#add('tpope/tpope-vim-abolish')
-    call dein#add('guns/xterm-color-table.vim')
+call plug#end()
 
-    " Syntax plugins
-    call dein#add('jwalton512/vim-blade')
-    call dein#add('digitaltoad/vim-pug')
-    call dein#add('lepture/vim-jinja')
+" CoC Config
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-    " Aestethics
-    call dein#add('chriskempson/base16-vim')
-    call dein#add('altercation/vim-colors-solarized')
-    call dein#add('Ardakilic/vim-tomorrow-night-theme')
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-    " You can specify revision/branch/tag.
-    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-    call dein#end()
-    call dein#save_state()
-endif
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
-" If you want to install not installed plugins on startup.
-" if dein#check_install()
-"   call dein#install()
-" endif
-" End dein Scripts-------------------------
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" END COC CONFIG
 
 
 " Required:
 filetype plugin indent on
 
 let mapleader = "\<Space>"
+
 " Python config ---------------------------
 let g:python_host_prog = '/home/j/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/home/j/.pyenv/versions/neovim3/bin/python'
 " Jedi
-let g:jedi#completions_enabled = 0
-let g:jedi#show_call_signatures_delay = 2000
-let g:jedi#smart_auto_mappings = 0
+" let g:jedi#completions_enabled = 0
+" let g:jedi#show_call_signatures_delay = 2000
+" let g:jedi#smart_auto_mappings = 0
 " Tests
 " let test#strategy = 'neovim'
 let test#python#runner = 'pytest'
-let test#python#pytest#options = '-vv --pdb -x'
+let test#python#pytest#options = '-vv -r s -x --pdb --disable-vcr'
 nnoremap <silent> <leader>tn :TestNearest<CR>
 nnoremap <silent> <leader>tf :TestFile<CR>
 nnoremap <silent> <leader>ts :TestSuite<CR>
@@ -154,8 +237,8 @@ nnoremap <silent> <leader>bb mxgggqG`xzx
 let g:vim_isort_map = '<C-i>'
 
 " C/C++ config ----------------------------
-let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header = "/usr/lib/clang/3.9.1/include"
+" let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
+" let g:deoplete#sources#clang#clang_header = "/usr/lib/clang/3.9.1/include"
 
 " Neomake ---------------------------------
 autocmd! BufWritePost * Neomake
@@ -166,7 +249,7 @@ let g:neomake_list_height = 5
 let g:neomake_python_enabled_makers = ['flake8']
 
 " javascript config
-let g:neomake_javascript_enabled_makers = ['flow','eslint']
+"let g:neomake_javascript_enabled_makers = ['flow','eslint']
 
 " rust config
 let g:neomake_rust_enabled_makers = ['cargo', 'rustc']
@@ -179,9 +262,9 @@ nmap <Leader><Space>p :lprev<CR>
 "------------------------------------------
 
 " Deoplete --------------------------------
-let g:deoplete#enable_at_startup=1
-let g:deoplete#auto_complete_delay=100
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" let g:deoplete#enable_at_startup=1
+" let g:deoplete#auto_complete_delay=100
+
 
 " Neosnippet ------------------------------
 let g:neosnippet#enable_snipmate_compatibility = 1
@@ -316,7 +399,16 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-let g:lightline = {'colorscheme': 'base16'}
+let g:lightline = {
+    \ 'colorscheme': 'base16',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \           [ 'cocstatus', 'readonly', 'filename', 'modified'] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status'
+    \ },
+    \ }
 
 function! MyCustomHighlights()  " colors are inverted because of base16-shell
     hi semshiUnresolved ctermfg=black ctermbg=yellow
