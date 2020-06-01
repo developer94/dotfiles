@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=/home/j/.oh-my-zsh
 
@@ -52,7 +49,7 @@ SAVEHIST=500000
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git wd docker web-search)
+plugins=(pyenv wd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -143,18 +140,9 @@ function tfr {
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 # alias i3lock="i3lock -i ~/pictures/desktop.png -u -p default"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/j/google-cloud-sdk/path.zsh.inc' ]; then source '/home/j/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/j/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/j/google-cloud-sdk/completion.zsh.inc'; fi
-
-# NVM
-# source /usr/share/nvm/init-nvm.sh
-
 # Autoenv
 # source /usr/share/autoenv/activate.sh
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
 # Base 16
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -164,8 +152,4 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-alias scheme="rlwrap -r -c scheme"
+alias scheme="rlwrap -r -c -f $HOME/mit-scheme-bindings.txt scheme"
